@@ -235,19 +235,19 @@ void loop()
   //int distance;
   //boolean first;
 //  unsigned long delta_time, t1, t2;
-int dev; // other_dev was removed
+//int dev; // other_dev was removed
   
 // int first, last; // array pointers
 //  delta_time = millis() - time_prev;
 
   if (RIGHT == train_direction)
     {
-    dev = right_dev;
+    //dev = right_dev;
     Serial.print("R>> ");
     }
   else
     {
-    dev = left_dev;
+    //dev = left_dev;
     Serial.print("L>> ");
     }
 

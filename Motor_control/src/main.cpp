@@ -40,7 +40,7 @@ const int CLOSE = 20;
 const int IN_RANGE = 40;
 const int MIN_SPEED = 120; // was 120
 const int SLOW_SPEED = 140;
-const int MAX_SPEED = 180; // was 180
+const int MAX_SPEED = 1023; // was 180
 const int SPEED_INC = 5;
 const int TIME_IN_STATION = 5000;
 const int SAMPLE_TIME = 200;
@@ -85,6 +85,21 @@ void dataReceived(const uint8_t *senderMac, const uint8_t *data, int dataLength)
   Serial.print(packet.slave_num);
   Serial.print("  / ");
   Serial.println(packet.distance);
+
+  if (train_direction==LEFT && packet.slave_num==LEFT) {
+    // the train is going left, and we got data from left sensor
+    current_dist=packet.distance;
+    return;
+  }
+  
+   if (train_direction==RIGHT && packet.slave_num==RIGHT) {
+    // the train is going left, and we got data from left sensor
+    current_dist=packet.distance;
+    return;
+  }
+
+
+
 }
 
 
@@ -170,12 +185,7 @@ void setup()
     }
   train_motor.stop(); // make sure it is stopped
   time_prev = millis();
-
- 
   delay (1000);
-  
-
- 
   train_speed = 0;
 
   l0 = read_distance(left_dev);

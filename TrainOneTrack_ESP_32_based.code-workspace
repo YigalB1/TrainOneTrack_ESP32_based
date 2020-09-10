@@ -3,6 +3,10 @@
 		{
 			"name": "Motor_control",
 			"path": "Motor_control"
+		},
+		{
+			"name": "Train_sensor",
+			"path": "Train_sensor"
 		}
 	]
 }
